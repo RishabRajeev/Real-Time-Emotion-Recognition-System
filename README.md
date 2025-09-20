@@ -1,14 +1,8 @@
 
 # Real Time Emotion Recognition (mini-Xception)
 
-A Pytorch implementation of "Real-time Convolutional Neural Networks for Emotion and Gender Classification" (mini-Xception) [Paper](https://arxiv.org/pdf/1710.07557.pdf)
+A Pytorch implementation of "Real-time Convolutional Neural Networks for Emotion and Gender Classification" (mini-Xception)  
 
-
-## Demo
-![1](https://user-images.githubusercontent.com/35613645/116496324-162c3c00-a8a5-11eb-9701-414406b745d1.gif)
-
-#### mini-Xception
-<img src="https://user-images.githubusercontent.com/35613645/113336812-365cef80-9327-11eb-992a-f88bf18db550.png" width="400" height="400">
 
 
 #### How to Install
@@ -209,5 +203,6 @@ Xception
 
 Pytorch GlobalAvgPooling
 - https://paperswithcode.com/method/global-average-pooling
+
 
 
