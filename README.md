@@ -12,10 +12,14 @@ A Pytorch implementation of "Real-time Convolutional Neural Networks for Emotion
 
 
 #### How to Install
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Or install individually
+pip install torch torchvision opencv-python numpy
 ```
- $ pip3 install -r requirements.txt
- ```
- Note that it can be run on lower versions of Pytorch so replace the versions with yours
+**Note:** The code works with various PyTorch versions. If you encounter version conflicts, you can install compatible versions.
 
 #### install opencv & dnn from source (optional)
 Both opencv dnn & haar cascade are used for face detection, if you want to use haar cascade you can skip this part.
@@ -45,13 +49,74 @@ if you **don't** want to use **dnn** modules just setup opencv with regular way
 sudo apt-get install python3-opencv
 ```
 
-#### Run Camera Demo
-##### Live camera demo 
-```python
-$ python3 camera_demo.py
+## Quick Start - Real-Time Emotion Detection
 
-# add '--haar' option if you want to use Haar cascade detector instead of dnn opencv face detector
-$ python3 camera_demo.py --haar
+### 🚀 **Easiest Way to Run (Recommended)**
+```bash
+# Simple emotion output
+python emotion_stream.py --format simple
+
+# JSON output for backend integration
+python emotion_stream.py --format json
+
+# With video window (for debugging)
+python emotion_stream.py --format json --show-video
+```
+
+### 📊 **Output Examples**
+**Simple Format:**
+```
+Emotion: Happy (Confidence: 0.849)
+Emotion: Neutral (Confidence: 0.756)
+```
+
+**JSON Format:**
+```json
+{
+  "emotion": "Happy",
+  "confidence": 0.849,
+  "probabilities": {
+    "Angry": 0.05,
+    "Disgust": 0.02,
+    "Fear": 0.01,
+    "Happy": 0.85,
+    "Sad": 0.03,
+    "Surprise": 0.02,
+    "Neutral": 0.02
+  },
+  "face_detected": true,
+  "timestamp": 1704112200.123
+}
+```
+
+### 🎯 **Command Options**
+```bash
+# Use Haar cascade detector (alternative to DNN)
+python emotion_stream.py --format json --haar
+
+# Use custom model weights
+python emotion_stream.py --format json --pretrained path/to/weights.pth.tar
+
+# Show help
+python emotion_stream.py --help
+```
+
+---
+
+## Visual Testing Demo
+##### Live camera demo with video window (for visual testing)
+```bash
+# Original demo with video window
+python camera_demo.py
+
+# Use Haar cascade detector instead of DNN
+python camera_demo.py --haar
+
+# Test on image
+python camera_demo.py --image --path path/to/image.jpg
+
+# Test on video
+python camera_demo.py --path path/to/video.mp4
 ```
 
 ### Test 
@@ -116,6 +181,8 @@ will show the confision matrix
 ![Screenshot 2021-04-01 20:13:14](https://user-images.githubusercontent.com/35613645/113336651-04e42400-9327-11eb-8aa1-d52d78eb0ad5.png)
 
 #### Folder structure    
+    ├── emotion_stream.py		# 🆕 Real-time emotion detection stream (MVP)
+    ├── camera_demo.py			# Visual testing demo with video window
     ├── model					# model's implementation
     ├── data					# data folder contains FER2013 dataset
     ├── train					# train on FER2013 dataset 
